@@ -1,6 +1,8 @@
 package model;
 
-public class Conteudo {
+public abstract class Conteudo {
+	
+	protected static final double DEFAULT_XP = 10d;
 	
 	private String titulo;
 	private String desc;
@@ -11,6 +13,8 @@ public class Conteudo {
 		this.desc = desc;
 		this.horas = horas;
 	}
+	
+	public abstract double makeXp();
 	
 	public String getTitulo() {
 		return titulo;

@@ -18,5 +18,17 @@ public class Mentoria extends Conteudo {
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
+
+
+	@Override
+	public double makeXp() {
+		return (this.getHoras() + 1) * DEFAULT_XP;
+	}
+	
+	public String toString() {
+		return "Mentoria {" + this.getTitulo() +
+				", " + this.getDesc() +
+				", " + this.getHoras() + "}";
+	}
 	
 }

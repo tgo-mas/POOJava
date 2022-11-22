@@ -37,5 +37,9 @@ public class Bootcamp {
 	public void setHoras(int horas) {
 		this.horas = horas;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Bootcamp [cursos=" + cursos + ", mentorias=" + mentorias + ", horas=" + horas + "]";
+	}
 }
