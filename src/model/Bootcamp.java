@@ -1,10 +1,16 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 public class Bootcamp {
 	
+	private String nome;
+	private String desc;
+	private LocalDate dataInicio;
+	private LocalDate dataFinal;
 	private Set<Conteudo> conteudos;
+	private Set<Dev> devsInscritos;
 	
 	public Bootcamp(Set<Conteudo> conteudos, int horas) {
 		this.conteudos = conteudos;

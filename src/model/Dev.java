@@ -24,6 +24,8 @@ public class Dev extends User {
 		
 		if(!this.btcInscritos.add(btc)) {
 			throw new Error("O Dev já está inscrito neste Bootcamp.");
+		}else {
+			contInscritos.addAll(btc.getConteudos());
 		}
 		
 	}
@@ -62,11 +64,9 @@ public class Dev extends User {
 	//// makeXpTotal() -> Calcula e retorna o xp total do Dev (Seus conteúdos concluídos)
 	
 	public double makeXpTotal() {
-		double soma = 0;
-		for(Conteudo cont:contConluidos) {
-			soma += cont.makeXp();
-		}
-		return soma;
+		return this.contConluidos.stream()
+				.mapToDouble(Conteudo::makeXp)
+				.sum();
 	}
 	
 	public Set<Bootcamp> getBtcInscritos() {
