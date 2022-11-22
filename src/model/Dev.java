@@ -35,10 +35,28 @@ public class Dev extends User {
 		if(this.contInscritos.contains(cont)) {
 			this.contInscritos.remove(cont);
 			this.contConluidos.add(cont);
+			verificarBtcs();
 		}else {
 			throw new Error("O Dev não está inscrito neste bootcamp.");
 		}
 		
+	}
+	
+	//// verificarBtcs() -> Verifica na lista de Bootcamps se há algum concluído e atualiza a lista.
+	
+	private void verificarBtcs() {
+		int i = 0, size = btcInscritos.size();
+		for(Bootcamp btc:btcInscritos) {
+			for(Conteudo cont:btc.getConteudos()) {
+				if(contConluidos.contains(cont)) {
+					i++;
+				}
+			}
+			if(i == size) {
+				btcInscritos.remove(btc);
+				btcConcluidos.add(btc);
+			}
+		}
 	}
 	
 	//// makeXpTotal() -> Calcula e retorna o xp total do Dev (Seus conteúdos concluídos)

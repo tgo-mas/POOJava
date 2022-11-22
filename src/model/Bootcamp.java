@@ -4,42 +4,30 @@ import java.util.Set;
 
 public class Bootcamp {
 	
-	private Set<Curso> cursos;
-	private Set<Mentoria> mentorias;
-	private int horas;
+	private Set<Conteudo> conteudos;
 	
-	public Bootcamp(Set<Curso> cursos, Set<Mentoria> mentorias, int horas) {
-		this.cursos = cursos;
-		this.mentorias = mentorias;
-		this.horas = horas;
+	public Bootcamp(Set<Conteudo> conteudos, int horas) {
+		this.conteudos = conteudos;
+	}
+	
+	public Set<Conteudo> getConteudos() {
+		return conteudos;
 	}
 
-	public Set<Curso> getCursos() {
-		return cursos;
+	public void setConteudos(Set<Conteudo> conteudos) {
+		this.conteudos = conteudos;
 	}
 
-	public void setCursos(Set<Curso> cursos) {
-		this.cursos = cursos;
-	}
-
-	public Set<Mentoria> getMentorias() {
-		return mentorias;
-	}
-
-	public void setMentorias(Set<Mentoria> mentorias) {
-		this.mentorias = mentorias;
-	}
-
-	public int getHoras() {
-		return horas;
-	}
-
-	public void setHoras(int horas) {
-		this.horas = horas;
+	public double makeXp() {
+		double soma = 0;
+		for(Conteudo cont:conteudos) {
+			soma += cont.makeXp();
+		}
+		return soma;
 	}
 
 	@Override
 	public String toString() {
-		return "Bootcamp [cursos=" + cursos + ", mentorias=" + mentorias + ", horas=" + horas + "]";
+		return "Bootcamp [Conteudos = " + conteudos + ", horas=" + makeXp() + "]";
 	}
 }
