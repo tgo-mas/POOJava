@@ -26,6 +26,9 @@ public class Dev extends User {
 			throw new Error("O Dev já está inscrito neste Bootcamp.");
 		}else {
 			contInscritos.addAll(btc.getConteudos());
+			Set<Dev> devs = btc.getDevsInscritos();
+			devs.add(this);
+			btc.setDevsInscritos(devs);
 		}
 		
 	}
@@ -47,8 +50,9 @@ public class Dev extends User {
 	//// verificarBtcs() -> Verifica na lista de Bootcamps se há algum concluído e atualiza a lista.
 	
 	private void verificarBtcs() {
-		int i = 0, size = btcInscritos.size();
 		for(Bootcamp btc:btcInscritos) {
+			int size = btc.getConteudos().size();
+			int i = 0;
 			for(Conteudo cont:btc.getConteudos()) {
 				if(contConluidos.contains(cont)) {
 					i++;
@@ -99,6 +103,12 @@ public class Dev extends User {
 
 	public void setContConluidos(Set<Conteudo> contConluidos) {
 		this.contConluidos = contConluidos;
+	}
+
+	@Override
+	public String toString() {
+		return "Dev [btcInscritos=" + btcInscritos + ", btcConcluidos=" + btcConcluidos + ", contInscritos="
+				+ contInscritos + ", contConluidos=" + contConluidos + "]";
 	}
 	
 }
